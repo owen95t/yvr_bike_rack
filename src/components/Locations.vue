@@ -6,7 +6,9 @@
 
 <!--    <pre>{{data}}</pre>-->
     <MapView />
+
     <b-container>
+      <b-form-input class="custom-input-search mt-5" v-model="search" placeholder="Search..."></b-form-input>
       <b-pagination
           v-model="currentPage"
           :total-rows="rows"
@@ -26,7 +28,9 @@
           :items="this.formatted"
           :fields="tableFields"
           :per-page="perPage"
-          :current-page="currentPage">
+          :current-page="currentPage"
+          :filter="search"
+      >
       </b-table>
     </b-container>
 
@@ -65,15 +69,23 @@ export default {
       }, {
         key: 'numberOfRacks',
         label: 'Number of Racks'
-      }]
+      }],
+      search: '',
+
     }
   },
   methods: {
     createList() {
-      for(let obj in json){
+      for(let obj of json){
         //this.formatted.push({id: obj.recordid, streetName: obj.fields.street_name, streetNumber: obj.fields.street_number})
         //console.log("Record ID: " + json[obj].recordid)
-        this.formatted.push({id: json[obj].recordid, streetName: json[obj].fields.street_name, streetNumber: json[obj].fields.street_number, city: "Vancouver", province: "BC", numberOfRacks: json[obj].fields.number_of_racks})
+        this.formatted.push({
+          id: json[obj].recordid,
+          streetName: json[obj].fields.street_name,
+          streetNumber: json[obj].fields.street_number,
+          city: "Vancouver", province: "BC",
+          numberOfRacks: json[obj].fields.number_of_racks
+        })
       }
       // for (let i = 0; i < json.length; i++) {
       //   this.formatted.push({id: json[i].recordid, streetName: json[i].fields.street_name, streetNumber: json[i].fields.street_number})
