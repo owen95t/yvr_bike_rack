@@ -1,4 +1,11 @@
-# yvr_bike_racks
+# Welcome to YVR Bike Racks!
+
+YVR (Airport code for Vancouver) Bike Rack is a simple website to see all the bike racks available in Vancouver.
+
+Data gathered from City of Vancouver's Open Data Portal
+
+Live on: 
+https://owen95t.github.io/yvr_bike_rack/
 
 Check out this notion document for documentation:
 
